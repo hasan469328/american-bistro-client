@@ -26,6 +26,7 @@ const route = createBrowserRouter([
   {
     path: "/home",
     element: <HomeLayout></HomeLayout>,
+    
   
   },
   // {
