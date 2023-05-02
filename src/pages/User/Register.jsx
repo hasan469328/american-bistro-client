@@ -6,6 +6,7 @@ const Register = () => {
   return (
     <div className="max-w-md mx-auto my-10">
       <form className="bg-white p-6 rounded-lg shadow-md">
+        <p className="mb-4"></p>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" for="username">
             Username
@@ -19,6 +20,18 @@ const Register = () => {
           />
         </div>
         <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2" for="username">
+            Email
+          </label>
+          <input
+            className="w-full px-3 py-2 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" for="password">
             Password
           </label>
@@ -28,6 +41,19 @@ const Register = () => {
             id="password"
             name="password"
             required
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2" for="password">
+            Photo Url
+          </label>
+          <input
+            className="w-full px-3 py-2 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+            type="text"
+            id=""
+            name="photo"
+            
           />
         </div>
 
