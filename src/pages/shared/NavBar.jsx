@@ -27,7 +27,7 @@ const NavBar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link>Home</Link>
+              <Link to='/'>Home</Link>
             </li>
 
             <li>
@@ -40,7 +40,7 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link>Home</Link>
+            <Link to='/'>Home</Link>
           </li>
           
           <li>
@@ -49,7 +49,7 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">Login</Link>
+        <Link to='/login' className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">Login</Link>
       </div>
     </div>
   );
