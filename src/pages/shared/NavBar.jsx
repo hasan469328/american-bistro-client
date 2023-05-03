@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+    .then()
+    .error(error => console.log(error))
+  }
+  console.log(user);
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -27,7 +36,7 @@ const NavBar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
             </li>
 
             <li>
@@ -35,21 +44,41 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-        <a className="text-transparent bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text font-semibold text-3xl">Americana Bistro</a>
+        <a className="text-transparent bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text font-semibold text-3xl">
+          Americana Bistro
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to='/'>Home</Link>
+            <Link to="/">Home</Link>
           </li>
-          
+
           <li>
             <Link>Blog</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login' className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">Login</Link>
+        {!user ? (
+          <Link
+            to="/login"
+            className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out"
+          >
+            Login
+          </Link>
+        ) : (
+          <>
+            <img
+              title={user?.displayName}
+              className="w-10 rounded-full"
+              src={user?.photoURL}
+            />
+            <Link onClick={handleLogOut} className="ms-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">
+              Logout
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

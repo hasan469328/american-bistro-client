@@ -2,11 +2,14 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
   const [error, setError] = useState(null);
+  const { auth } = useContext(AuthContext);
+  console.log(auth);
 
   const handleCheckBox = (event) => {
     setAccepted(event.target.checked);
@@ -17,11 +20,11 @@ const Register = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const name = form.name.value;
+    const username = form.name.value;
     const photo = form.photo.value;
     console.log(email, password, photo);
 
-    if(password.length < 6){
+    if (password.length < 6) {
       setError("password must be at least 6 char long");
       return;
     }
@@ -29,6 +32,8 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
+
+        
         console.log(createdUser);
         form.reset();
       })

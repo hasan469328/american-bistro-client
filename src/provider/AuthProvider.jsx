@@ -46,8 +46,11 @@ const AuthProvider = ({ children }) => {
   const provider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = () => {
-    return signInWithPopup(auth, provider)
-  }
+    setLoader(true);
+    return signInWithPopup(auth, provider);
+  };
+
+  const upDateProfile = () => {};
 
   const authInfo = {
     user,
@@ -55,12 +58,11 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     loader,
-    handleGoogleSignIn
+    handleGoogleSignIn,
+    auth,
   };
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 
