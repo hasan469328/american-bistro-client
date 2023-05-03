@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const [accepted, setAccepted] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleCheckBox = (event) => {
+    setAccepted(event.target.checked);
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    console.log(email, password, photo);
+
+    if(password.length < 6){
+      setError("password must be at least 6 char long");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        form.reset();
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="max-w-md mx-auto my-10">
-      <form className="bg-white p-6 rounded-lg shadow-md">
-        <p className="mb-4"></p>
+      <form
+        onSubmit={handleRegister}
+        className="bg-white p-6 rounded-lg shadow-md"
+      >
+        <p className="mb-4 text-red-500">{error}</p>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" for="username">
             Username
@@ -16,7 +50,6 @@ const Register = () => {
             type="text"
             id="username"
             name="username"
-            required
           />
         </div>
         <div className="mb-4">
@@ -53,11 +86,13 @@ const Register = () => {
             type="text"
             id=""
             name="photo"
-            
           />
         </div>
 
-        <button className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">Sign In</button>
+        <button className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">
+          Register
+        </button>
+        <br />
         <br />
         <p>
           already have an account?{" "}

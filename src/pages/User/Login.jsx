@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const {signIn} = useContext(AuthContext);
+  const [error, setError] = useState(null)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'
+
+  const handleLogin = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    
+    signIn(email, password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      form.reset();
+      navigate(from, {replace: true})
+    })
+    .catch(error => setError(error.message))
+  }
   return (
     <div className="max-w-md mx-auto my-10">
-      <form className="bg-white p-6 rounded-lg shadow-md">
+      <form onSubmit={handleLogin} className="bg-white p-6 rounded-lg shadow-md">
+        <p className="mb-4 text-red-500">{error}</p>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" for="username">
             Email
