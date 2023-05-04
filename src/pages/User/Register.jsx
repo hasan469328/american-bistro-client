@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { FaFacebook } from "react-icons/fa";
+import { Link, useNavigate,  } from "react-router-dom";
+
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
-  const [accepted, setAccepted] = useState(false);
+  const navigate = useNavigate()
+
   const [error, setError] = useState(null);
-  const { auth } = useContext(AuthContext);
+  const { auth, logOut } = useContext(AuthContext);
   console.log(auth);
 
   const handleCheckBox = (event) => {
@@ -35,16 +36,20 @@ const Register = () => {
 
         updateProfile(user, {
           displayName: username,
-          photoURL: photo
-        }).then(() => {
-          console.log('profile updated')
-       
-        }).catch((error) => {
-          // An error occurred
-          // ...
-        });
-        
-       
+          photoURL: photo,
+        })
+          .then(() => {
+            console.log("profile updated");
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
+
+        logOut().then().catch();
+
+        navigate('/login')
+
         form.reset();
       })
       .catch((error) => console.log(error));
