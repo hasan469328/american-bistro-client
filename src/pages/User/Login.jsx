@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
-  const { signIn, handleGoogleSignIn } = useContext(AuthContext);
+  const { signIn, handleGoogleSignIn, handleGitHubSignIn } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,6 +19,16 @@ const Login = () => {
       })
       .catch((error) => setError(error.message));
   };
+
+  // gitHub sign in
+  const handleGitLogIn = () => {
+    handleGitHubSignIn()
+    .then((result) => {
+      const user = result.user;
+      navigate(from, { replace: true });
+    })
+    .catch((error) => setError(error.message));
+  }
 
   // email password sign in
   const handleLogin = (event) => {
@@ -100,7 +110,7 @@ const Login = () => {
       <br />
 
       {/* github sign in */}
-      <div className="bg-black shadow-sm flex items-center justify-center rounded-md cursor-pointer">
+      <div onClick={handleGitLogIn} className="bg-black shadow-sm flex items-center justify-center rounded-md cursor-pointer">
         <div className="container mx-auto py-2 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center">
             <div className="flex-shrink-0">

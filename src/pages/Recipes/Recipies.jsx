@@ -2,7 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import RecipiesCard from "./RecipiesCard";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Recipies = () => {
   const data = useLoaderData();
@@ -11,37 +11,18 @@ const Recipies = () => {
     <>
       {/* banner section */}
       <div
-        className="hero min-h-screen mb-5"
-        style={{ backgroundImage: `url(${image})`, backgroundSize: "cover" }}
+        className="hero max-h-screen mb-28"
+        style={{
+          // backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          // backgroundPosition: "center",
+        }}
       >
-        <LazyLoadImage
-          effect="blur"
-          src={image}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-        {/* <div style={{ paddingBottom: "56.25%" }}>
-          <LazyLoadImage
-            effect="blur"
-            src={image}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-            }}
-          />
-        </div> */}
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-lg">
+        <LazyLoadImage effect="blur" src={image} alt="Background Image" className="max-h-screen w-screen"/>
+
+        
+        <div className="hero-content  text-[#808080] !items-end !align-bottom">
+          <div className="max-w-lg fw font-bold">
             <h1 className="mb-5 text-5xl font-bold">{name}</h1>
             <p className="mb-5 text-xl">{bio}</p>
             <p className="mb-5">Likes : {likes}</p>
