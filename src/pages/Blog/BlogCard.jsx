@@ -31,7 +31,7 @@ const BlogCard = ({ blog }) => {
       <br />
       {/*download defined pdf  */}
       <PDFDownloadLink document={<BlogPDFDocument />} fileName="blog-info.pdf">
-        <button className="font-medium btn btn-info absolute inset-x-0 bottom-4">Download PDF</button>
+        <button className="font-medium btn btn-info absolute inset-x-4 bottom-4">Download PDF</button>
       </PDFDownloadLink>
     </div>
   );

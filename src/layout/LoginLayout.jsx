@@ -5,7 +5,7 @@ import Footer from '../pages/shared/Footer';
 
 const LoginLayout = () => {
   return (
-    <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
+    <div className='mx-auto  lg:px-8 max-w-7xl'>
       <NavBar></NavBar>
       <Outlet></Outlet>
       <Footer></Footer>

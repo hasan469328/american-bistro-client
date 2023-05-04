@@ -14,7 +14,7 @@ const HomeLayout = () => {
   const {loader} = useContext(AuthContext);
   
   return (
-    <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
+    <div className='lg:mx-auto lg:px-8 max-w-7xl'>
       <NavBar></NavBar>
       <Banner></Banner>
       <ChefCard></ChefCard>

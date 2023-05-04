@@ -5,7 +5,7 @@ import Blog from '../pages/Blog/Blog';
 
 const BlogLaylout = () => {
   return (
-    <div>
+    <div className='lg:mx-auto lg:px-8 max-w-7xl'>
       <NavBar></NavBar>
       <Blog></Blog>
       <Footer></Footer>
