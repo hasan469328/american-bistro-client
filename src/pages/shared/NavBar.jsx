@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const NavBar = () => {
@@ -7,9 +7,9 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-    .then()
-    .error(error => console.log(error))
-  }
+      .then()
+      .error((error) => console.log(error));
+  };
   console.log(user);
   return (
     <div className="navbar bg-base-100">
@@ -36,11 +36,15 @@ const NavBar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/">Home</Link>
+              <NavLink activeClassName="bg-blue-500 text-white" to="/">
+                Home
+              </NavLink>
             </li>
 
             <li>
-              <Link>Blog</Link>
+              <NavLink activeClassName="bg-blue-500 text-white" to="/blog">
+                Blog
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -51,11 +55,31 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              style={({ isActive, isPending }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                };
+              }}
+              to="/"
+            >
+              Home
+            </NavLink>
           </li>
 
           <li>
-            <Link>Blog</Link>
+            <NavLink
+              style={({ isActive, isPending }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                };
+              }}
+              to="/blog"
+            >
+              Blog
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -74,7 +98,10 @@ const NavBar = () => {
               className="w-10 rounded-full"
               src={user?.photoURL}
             />
-            <Link onClick={handleLogOut} className="ms-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">
+            <Link
+              onClick={handleLogOut}
+              className="ms-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out"
+            >
               Logout
             </Link>
           </>

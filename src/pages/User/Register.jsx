@@ -20,9 +20,9 @@ const Register = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const username = form.name.value;
+    const username = form.username.value;
     const photo = form.photo.value;
-    console.log(email, password, photo);
+    console.log(email, password, photo, username);
 
     if (password.length < 6) {
       setError("password must be at least 6 char long");
@@ -31,10 +31,20 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
-        const createdUser = result.user;
+        const user = result.user;
 
+        updateProfile(user, {
+          displayName: username,
+          photoURL: photo
+        }).then(() => {
+          console.log('profile updated')
+       
+        }).catch((error) => {
+          // An error occurred
+          // ...
+        });
         
-        console.log(createdUser);
+       
         form.reset();
       })
       .catch((error) => console.log(error));

@@ -5,6 +5,7 @@ import Login from "../pages/User/Login";
 import Register from "../pages/User/Register";
 import RecipeLayout from "../layout/RecipeLayout";
 import Recipies from "../pages/Recipes/Recipies";
+import BlogLaylout from "../layout/BlogLaylout";
 
 const route = createBrowserRouter([
   {
@@ -32,12 +33,19 @@ const route = createBrowserRouter([
   {
     path: "/recipes",
     element: <RecipeLayout></RecipeLayout>,
-    children: [{
-      path: ':id',
-      element: <Recipies></Recipies>,
-      loader: ({params}) => fetch(`http://localhost:5000/chef/${params.id}`) 
-    }]
-  }
+    children: [
+      {
+        path: ":id",
+        element: <Recipies></Recipies>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/chef/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: 'blog',
+    element: <BlogLaylout></BlogLaylout>
+  },
   // {
   //   path: "/news",
   //   element: <NewsDetail></NewsDetail>,
@@ -51,6 +59,5 @@ const route = createBrowserRouter([
   //   ],
   // },
 ]);
-
 
 export default route;

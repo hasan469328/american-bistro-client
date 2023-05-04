@@ -8,6 +8,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import OurFeature from '../pages/Home/Banner/OurFeature';
 
 
+
 const HomeLayout = () => {
   const {loader} = useContext(AuthContext);
   
@@ -17,6 +18,7 @@ const HomeLayout = () => {
       <Banner></Banner>
       <ChefCard></ChefCard>
       <OurFeature></OurFeature>
+      
       <Footer></Footer>
     </div>
   );
