@@ -6,6 +6,7 @@ import Footer from '../pages/shared/Footer';
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import OurFeature from '../pages/Home/Banner/OurFeature';
+import RegionalDishes from '../pages/Home/Banner/RegionalDishes';
 
 
 
@@ -18,6 +19,7 @@ const HomeLayout = () => {
       <Banner></Banner>
       <ChefCard></ChefCard>
       <OurFeature></OurFeature>
+      <RegionalDishes></RegionalDishes>
       
       <Footer></Footer>
     </div>
