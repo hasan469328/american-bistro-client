@@ -24,11 +24,14 @@ const BlogCard = ({ blog }) => {
     </Document>
   );
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="bg-white rounded-lg shadow-lg p-6 relative">
       <h3 className="text-xl font-bold mb-2">{question}</h3>
       <p className="text-gray-500 mb-4">{answer}</p>
+      <br />
+      <br />
+      {/*download defined pdf  */}
       <PDFDownloadLink document={<BlogPDFDocument />} fileName="blog-info.pdf">
-        <button className="btn btn-info">Download PDF</button>
+        <button className="font-medium btn btn-info absolute inset-x-0 bottom-4">Download PDF</button>
       </PDFDownloadLink>
     </div>
   );
