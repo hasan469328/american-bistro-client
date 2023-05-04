@@ -53,15 +53,9 @@ const NavBar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="flex gap-4 px-1">
           <li>
             <NavLink
-              style={({ isActive, isPending }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isPending ? "red" : "black",
-                };
-              }}
               to="/"
             >
               Home
@@ -73,7 +67,8 @@ const NavBar = () => {
               style={({ isActive, isPending }) => {
                 return {
                   fontWeight: isActive ? "bold" : "",
-                  color: isPending ? "red" : "black",
+                  background: isActive ? "#B2BEB5" : "",
+                  padding: isActive ? "5px" : ""
                 };
               }}
               to="/blog"
