@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const RegionalDishes = () => {
   const [regionalDishes, setRegionalDishes] = useState([]);
   useEffect(()=> {
-    fetch('http://localhost:5000/rdishes')
+    fetch('https://americana-bistro-server-hasan469328.vercel.app/rdishes')
     .then(res => res.json())
     .then(data => setRegionalDishes(data))
     

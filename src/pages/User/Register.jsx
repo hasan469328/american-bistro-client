@@ -10,7 +10,7 @@ const Register = () => {
 
   const [error, setError] = useState(null);
   const { auth, logOut } = useContext(AuthContext);
-  console.log(auth);
+  
 
   const handleCheckBox = (event) => {
     setAccepted(event.target.checked);
@@ -23,7 +23,7 @@ const Register = () => {
     const password = form.password.value;
     const username = form.username.value;
     const photo = form.photo.value;
-    console.log(email, password, photo, username);
+    
 
     if (password.length < 6) {
       setError("password must be at least 6 char long");

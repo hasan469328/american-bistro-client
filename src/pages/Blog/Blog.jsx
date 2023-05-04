@@ -6,7 +6,7 @@ import { GridLoader } from "react-spinners";
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
   const { loader, setLoader } = useContext(AuthContext);
-  fetch("http://localhost:5000/blog")
+  fetch("https://americana-bistro-server-hasan469328.vercel.app/blog")
     .then((res) => res.json())
     .then((data) => {
       setLoader(false);

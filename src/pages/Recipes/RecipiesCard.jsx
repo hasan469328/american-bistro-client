@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
 
 const RecipiesCard = ({ re }) => {
   const { cooking_method, ingredients, rating, recipe_name } = re;
@@ -30,11 +30,7 @@ const RecipiesCard = ({ re }) => {
         <div className="flex items-center justify-between">
           <div className="flex-1">
             <div className="flex gap-2 items-center text-xl">
-              <Rating
-                style={{ maxWidth: 140 }}
-                value={rating}
-                readOnly
-              />
+              <Rating style={{ maxWidth: 140 }} value={rating} readOnly />
               {rating}
             </div>
           </div>
@@ -52,10 +48,7 @@ const RecipiesCard = ({ re }) => {
           </div>
           <ToastContainer></ToastContainer>
         </div>
-
-        
       </div>
-      
     </div>
   );
 };

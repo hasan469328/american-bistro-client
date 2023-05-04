@@ -46,7 +46,7 @@ const route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chef/${params.id}`),
+          fetch(`https://americana-bistro-server-hasan469328.vercel.app/chef/${params.id}`),
       },
     ],
   },

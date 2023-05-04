@@ -1,6 +1,8 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import RecipiesCard from "./RecipiesCard";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Recipies = () => {
   const data = useLoaderData();
@@ -12,6 +14,31 @@ const Recipies = () => {
         className="hero min-h-screen mb-5"
         style={{ backgroundImage: `url(${image})`, backgroundSize: "cover" }}
       >
+        <LazyLoadImage
+          effect="blur"
+          src={image}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        {/* <div style={{ paddingBottom: "56.25%" }}>
+          <LazyLoadImage
+            effect="blur"
+            src={image}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </div> */}
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-lg">
@@ -23,6 +50,7 @@ const Recipies = () => {
           </div>
         </div>
       </div>
+
       {/* Recipes Card Setion */}
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mt-5">
         {recipe.map((re) => (

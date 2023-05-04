@@ -3,12 +3,13 @@ import Chef from "./Chef";
 import { AuthContext } from "../../provider/AuthProvider";
 import { GridLoader } from "react-spinners";
 
+
 const ChefCard = () => {
   const [chefData, setChefData] = useState([]);
   const { loader, setLoader } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/chef")
+    fetch("https://americana-bistro-server-hasan469328.vercel.app/chef")
       .then((res) => res.json())
       .then((data) => {
         setChefData(data);
