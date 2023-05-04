@@ -34,4 +34,4 @@ If you have any questions or feedback about the American Cuisine website, feel f
 
 ## Live Site
 
-Check out our live site at [demo](https://americana-bistro-client.web.app/)com to explore the best of American food!
+Check out our live site at [demo](https://americana-bistro-client.web.app/) to explore the best of American food!
