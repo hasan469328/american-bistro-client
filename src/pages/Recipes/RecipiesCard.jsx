@@ -1,8 +1,13 @@
 import { Rating } from "@smastrom/react-rating";
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const notify = () => {
+  return toast("Added as Favorite!");
+};
 
 const RecipiesCard = ({ re }) => {
-  console.log(re);
   const { cooking_method, ingredients, rating, recipe_name } = re;
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -21,12 +26,14 @@ const RecipiesCard = ({ re }) => {
         <p>{cooking_method}</p>
 
         <div className="flex items-center">
-          <div className="flex-1">
-            {rating}
-          </div>
-          <button className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white  py-2 px-2 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out font-semibold">
+          <div className="flex-1">{rating}</div>
+          <button
+            onClick={notify}
+            className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white  py-2 px-2 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out font-semibold"
+          >
             Favorite
           </button>
+          <ToastContainer></ToastContainer>
         </div>
       </div>
     </div>
