@@ -3,8 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import RecipiesCard from "./RecipiesCard";
 
 const Recipies = () => {
-  const chef = useLoaderData();
-  const { id, name, experience, recipes, likes, image, bio, recipe } = chef;
+  const data = useLoaderData();
+  const { id, name, experience, recipes, likes, image, bio, recipe } = data;
   return (
     <>
       {/* banner section */}

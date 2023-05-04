@@ -60,6 +60,7 @@ const AuthProvider = ({ children }) => {
     loader,
     handleGoogleSignIn,
     auth,
+    setLoader
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
