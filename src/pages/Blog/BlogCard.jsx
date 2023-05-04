@@ -31,7 +31,7 @@ const BlogCard = ({ blog }) => {
       <br />
       {/*download defined pdf  */}
       <PDFDownloadLink document={<BlogPDFDocument />} fileName="blog-info.pdf">
-        <button className="font-medium btn btn-info absolute inset-x-4 bottom-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">Download PDF</button>
+        <button className="font-medium btn btn-info absolute inset-x-4 bottom-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white old py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out">Download PDF</button>
       </PDFDownloadLink>
     </div>
   );
