@@ -5,7 +5,7 @@ import { GridLoader } from "react-spinners";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const {loader} = useContext(AuthContext)
+  const { loader } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -38,15 +38,11 @@ const NavBar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <NavLink activeClassName="bg-blue-500 text-white" to="/">
-                Home
-              </NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
 
             <li>
-              <NavLink activeClassName="bg-blue-500 text-white" to="/blog">
-                Blog
-              </NavLink>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
           </ul>
         </div>
@@ -57,11 +53,7 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-4 px-1">
           <li>
-            <NavLink
-              to="/"
-            >
-              Home
-            </NavLink>
+            <NavLink to="/">Home</NavLink>
           </li>
 
           <li>
@@ -70,7 +62,7 @@ const NavBar = () => {
                 return {
                   fontWeight: isActive ? "bold" : "",
                   background: isActive ? "#B2BEB5" : "",
-                  padding: isActive ? "5px" : ""
+                  padding: isActive ? "5px" : "",
                 };
               }}
               to="/blog"
@@ -82,16 +74,16 @@ const NavBar = () => {
       </div>
       <div className="navbar-end">
         {loader ? (
-        <div>
-          <GridLoader
-            color="#36d7b7"
-            cssOverride={{
-              display: "block",
-              margin: "0 auto",
-            }}
-          />
-        </div>
-      ) : !user ? (
+          <div>
+            <GridLoader
+              color="#36d7b7"
+              cssOverride={{
+                display: "block",
+                margin: "0 auto",
+              }}
+            />
+          </div>
+        ) : !user ? (
           <Link
             to="/login"
             className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out"
