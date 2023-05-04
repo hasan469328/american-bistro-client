@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate,  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [error, setError] = useState(null);
   const { auth, logOut } = useContext(AuthContext);
@@ -48,7 +48,7 @@ const Register = () => {
 
         logOut().then().catch();
 
-        navigate('/login')
+        navigate("/login");
 
         form.reset();
       })

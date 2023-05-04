@@ -13,13 +13,12 @@ const Login = () => {
   // google sign in
   const handleGoogleLogin = () => {
     handleGoogleSignIn()
-    .then(result => {
-      const user = result.user;
-      navigate(from, { replace: true })
-      console.log(user)
-    })
-    .catch(error => setError(error.message))
-  }
+      .then((result) => {
+        const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => setError(error.message));
+  };
 
   // email password sign in
   const handleLogin = (event) => {
@@ -31,7 +30,6 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         form.reset();
         navigate(from, { replace: true });
       })
@@ -84,7 +82,10 @@ const Login = () => {
       <hr />
       <br />
       {/* google sign in  */}
-      <div onClick={handleGoogleLogin} className="bg-white shadow-sm flex items-center justify-center">
+      <div
+        onClick={handleGoogleLogin}
+        className="bg-white shadow-sm flex items-center justify-center"
+      >
         <div className="bg-slate-400 container mx-auto py-2 px-4 sm:px-6 lg:px-8 text-white rounded-md cursor-pointer">
           <div className="flex items-center justify-center">
             <div className="flex-shrink-0">
