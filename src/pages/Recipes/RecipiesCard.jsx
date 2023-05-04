@@ -21,8 +21,8 @@ const RecipiesCard = ({ re }) => {
         <h2 className="text-xl font-medium">Ingredients: </h2>
         <div className="mb-4">
           {" "}
-          {ingredients.map((ing) => (
-            <li>{ing}</li>
+          {ingredients.map((ing, index) => (
+            <li key={index}>{ing}</li>
           ))}
         </div>
         <p className="text-xl font-medium">Cooking Method</p>

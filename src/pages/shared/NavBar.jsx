@@ -97,12 +97,7 @@ const NavBar = () => {
               className="w-10 rounded-full"
               src={user?.photoURL}
             />
-            <Link
-              onClick={handleLogOut}
-              className="ms-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-2 lg:px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out"
-            >
-              Logout
-            </Link>
+            
           </>
         )}
       </div>

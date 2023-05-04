@@ -10,32 +10,32 @@ const Recipies = () => {
   return (
     <>
       {/* banner section */}
-      <div
-        className="hero max-h-screen mb-28"
-        style={{
-          // backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          // backgroundPosition: "center",
-        }}
-      >
-        <LazyLoadImage effect="blur" src={image} alt="Background Image" className="max-h-screen w-screen"/>
-
-        
-        <div className="hero-content  text-[#808080] !items-end !align-bottom">
-          <div className="max-w-lg fw font-bold">
-            <h1 className="mb-5 text-5xl font-bold">{name}</h1>
-            <p className="mb-5 text-xl">{bio}</p>
-            <p className="mb-5">Likes : {likes}</p>
-            <p className="mb-5">Total Recipes : {recipes}</p>
-            <p className="mb-5">Experience : {experience}</p>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col lg:flex-row">
+          <LazyLoadImage
+            effect="blur"
+            src={image}
+            className="max-w-[280px] lg:max-w-sm rounded-lg shadow-2xl"
+          />
+          <div>
+            
+            <h1 className="text-transparent bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-2xl mb-2 lg:mb-5 lg:text-5xl font-bold text-center">{name}</h1>
+            <p className="text-[#808080] lg:mb-5 lg:text-xl">{bio}</p>
+            <p className="text-[#808080] lg:mb-5">Likes : {likes}</p>
+            <p className="text-[#808080] lg:mb-5">Total Recipes : {recipes}</p>
+            <p className="text-[#808080] mb-5">Experience : {experience}</p>
           </div>
         </div>
       </div>
+      
+      <h2 className="mt-10 mb-5 text-transparent bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text lg:text-5xl text-3xl text-center font-bold ">Chef's Recipes</h2>
+
+      <hr className="bg-gradient-to-r from-red-500 to-yellow-500 h-0.5 w-1/2 mx-auto"></hr>
 
       {/* Recipes Card Setion */}
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mt-5">
-        {recipe.map((re) => (
-          <RecipiesCard key={re.recipe_name} re={re}></RecipiesCard>
+        {recipe.map((re, index) => (
+          <RecipiesCard key={index} re={re}></RecipiesCard>
         ))}
       </div>
     </>
