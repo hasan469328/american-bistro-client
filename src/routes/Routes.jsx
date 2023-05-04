@@ -7,11 +7,13 @@ import RecipeLayout from "../layout/RecipeLayout";
 import Recipies from "../pages/Recipes/Recipies";
 import BlogLaylout from "../layout/BlogLaylout";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import NotFound from "../pages/Error/NotFound";
 
 const route = createBrowserRouter([
   {
     path: "/",
     element: <LoginLayout></LoginLayout>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -30,6 +32,7 @@ const route = createBrowserRouter([
   {
     path: "/home",
     element: <HomeLayout></HomeLayout>,
+    errorElement: <NotFound></NotFound>,
   },
   {
     path: "/recipes",
@@ -37,29 +40,21 @@ const route = createBrowserRouter([
     children: [
       {
         path: ":id",
-        element: <PrivateRoute><Recipies></Recipies></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Recipies></Recipies>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/chef/${params.id}`),
       },
-      
     ],
   },
   {
-    path: 'blog',
-    element: <BlogLaylout></BlogLaylout>
+    path: "blog",
+    element: <BlogLaylout></BlogLaylout>,
+    errorElement: <NotFound></NotFound>,
   },
-  // {
-  //   path: "/news",
-  //   element: <NewsDetail></NewsDetail>,
-  //   children: [
-  //     {
-  //       path: ":id",
-  //       element: <PrivateRoute><News></News></PrivateRoute>,
-  //       loader: ({ params }) =>
-  //         fetch(`https://dragon-news-server-hasan469328.vercel.app/news/${params.id}`),
-  //     },
-  //   ],
-  // },
 ]);
 
 export default route;

@@ -1,16 +1,18 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { GridLoader } from "react-spinners";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const {loader} = useContext(AuthContext)
 
   const handleLogOut = () => {
     logOut()
       .then()
       .error((error) => console.log(error));
   };
-  console.log(user);
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -79,7 +81,17 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        {!user ? (
+        {loader ? (
+        <div>
+          <GridLoader
+            color="#36d7b7"
+            cssOverride={{
+              display: "block",
+              margin: "0 auto",
+            }}
+          />
+        </div>
+      ) : !user ? (
           <Link
             to="/login"
             className="bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-semibold py-2 px-4 border border-red-600 rounded-lg shadow-md transition duration-300 ease-in-out"
